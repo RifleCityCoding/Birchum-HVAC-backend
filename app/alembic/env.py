@@ -22,6 +22,10 @@ fileConfig(config.config_file_name)
 from app.db.base import Base  # noqa
 from app.models import User
 from app.models.token import Token
+from app.models.receipt import Receipts
+from app.models.customer_pivot import CustomerConnect
+from app.models.user_info import CustomerInfo
+
 target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
