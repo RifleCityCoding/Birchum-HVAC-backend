@@ -9,3 +9,7 @@ class CustomerConnect:
     user_id = ForeignKey("users.id")
     customer_id = ForeignKey("customer_info.id")
     receipt_id = ForeignKey("receipts.id")
+
+    user = relationship("User", back_populates="customer_connects")
+    customer = relationship("CustomerInfo", back_populates="customer_connects")
+    receipt = relationship("Receipts", back_populates="customer_connects")

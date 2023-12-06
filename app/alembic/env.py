@@ -24,7 +24,7 @@ from app.models import User
 from app.models.token import Token
 from app.models.receipt import Receipts
 from app.models.customer_pivot import CustomerConnect
-from app.models.user_info import CustomerInfo
+from app.models.customer_info import CustomerInfo
 
 target_metadata = Base.metadata
 

@@ -11,3 +11,5 @@ class Receipts(Base):
     labor_cost = Column(Float, index=True, default="0.00")
     total = Column(Float, index=True, default="0.00")
     relationship()
+
+    customer_connects = relationship("CustomerConnect", back_populates="receipt")

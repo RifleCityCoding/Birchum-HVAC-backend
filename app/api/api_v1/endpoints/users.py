@@ -1,10 +1,8 @@
 from typing import Any, List, Annotated
-
 from fastapi import APIRouter, Body, Depends, HTTPException, Form
 from fastapi.encoders import jsonable_encoder
 from pydantic.networks import EmailStr
 from sqlalchemy.orm import Session
-
 from app import controllers, models, schemas
 from app.api import deps
 from app.core.config import settings
