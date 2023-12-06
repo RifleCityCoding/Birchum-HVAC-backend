@@ -15,6 +15,8 @@ class User(Base):
     is_superuser = Column(Boolean(), default=False)
     relationship()
 
+    customer_connects = relationship("CustomerConnect", back_populates="user")
+
     def to_schema(self):
         return UserInDB(
             id=self.id,
