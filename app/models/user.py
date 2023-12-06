@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, Integer, String
+from sqlalchemy import Boolean, Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from app.schemas import UserInDB
 
@@ -13,9 +13,8 @@ class User(Base):
     hashed_password = Column(String, nullable=False)
     is_active = Column(Boolean(), default=True)
     is_superuser = Column(Boolean(), default=False)
-    relationship()
 
-    customer_connects = relationship("CustomerConnect", back_populates="user")
+    customer_connects = relationship("CustomerConnect", primaryjoin="User.id == CustomerConnect.users.id",  back_populates="users")
 
     def to_schema(self):
         return UserInDB(

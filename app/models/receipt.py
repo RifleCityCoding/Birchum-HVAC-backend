@@ -1,5 +1,5 @@
 from app.db.base_class import Base
-from sqlalchemy import  Column, Integer, String, Float
+from sqlalchemy import  Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import relationship
 
 class Receipts(Base):
@@ -10,6 +10,5 @@ class Receipts(Base):
     parts_cost = Column(Float, index=True, default="0.00")
     labor_cost = Column(Float, index=True, default="0.00")
     total = Column(Float, index=True, default="0.00")
-    relationship()
 
-    customer_connects = relationship("CustomerConnect", back_populates="receipt")
+    customer_connects = relationship("CustomerConnect", primaryjoin="Receipts.id == CustomerConnect.receipts.id", back_populates="receipt")
