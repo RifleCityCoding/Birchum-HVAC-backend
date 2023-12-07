@@ -11,4 +11,4 @@ class Receipts(Base):
     labor_cost = Column(Float, index=True, default="0.00")
     total = Column(Float, index=True, default="0.00")
 
-    customer_connects = relationship("CustomerConnect", primaryjoin="Receipts.id == CustomerConnect.receipts.id", back_populates="receipt")
+    customer_connects = relationship("CustomerConnect", primaryjoin="Receipts.id == CustomerConnect.receipt_id", back_populates="receipt")

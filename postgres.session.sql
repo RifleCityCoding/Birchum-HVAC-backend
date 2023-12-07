@@ -1,9 +1,9 @@
 UPDATE users
 SET 
-  email = 'jon@birchumhvac.com',
-  hashed_password = '$2b$12$p.EwI0QwWUuYeC0SjhdodOw0nd26GxBe1UxHtg7COXRL/vNh5twoW',
+  email = 'bob@bob.com',
+  hashed_password = '$2b$12$De.bQUrydqS1.FDMxh8LpOvlhl4HdznbJygp2alOUlMx3ZUMaczHy',
   is_active = true,
   is_superuser = true,
-  username = 'JonAdmin'
-WHERE id = 1;
+  username = 'bob@bob.com'
+WHERE id = 3;
 

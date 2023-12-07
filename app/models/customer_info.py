@@ -11,4 +11,4 @@ class CustomerInfoModel(Base):
     address = Column(String, index=True, default="Address")
     phone = Column(String, index=True, default="(###)###-####")
 
-    customer_connects = relationship("CustomerConnect", primaryjoin="CustomerInfoModel.id == CustomerConnect.customer_info.id", back_populates="customer")
+    customer_connects = relationship("CustomerConnect", primaryjoin="CustomerInfoModel.id == CustomerConnect.customer_id", back_populates="customer")
