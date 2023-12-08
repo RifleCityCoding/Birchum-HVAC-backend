@@ -24,6 +24,7 @@ from app.models.token import Token
 from app.models.receipt import Receipts
 from app.models.customer_pivot import CustomerConnect
 from app.models.customer_info import CustomerInfoModel
+from app.models.appointments import ScheduledBlock
 
 target_metadata = Base.metadata
 

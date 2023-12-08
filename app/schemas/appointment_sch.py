@@ -3,8 +3,8 @@ from typing import Optional
 from datetime import datetime
 
 class ScheduledBlockSchema(BaseModel):
-    id: Optional[int]
-    start_time: datetime
-    end_time: datetime
+    id: int
+    start_time: str
+    end_time: str
     full_name: str
     phone_number: str
