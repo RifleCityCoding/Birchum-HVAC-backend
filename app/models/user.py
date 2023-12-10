@@ -14,7 +14,8 @@ class User(Base):
     is_active = Column(Boolean(), default=True)
     is_superuser = Column(Boolean(), default=False)
 
-    customer_connects = relationship("CustomerConnect", primaryjoin="User.id == CustomerConnect.users.id",  back_populates="users")
+    customer_connects = relationship("CustomerConnect", primaryjoin="User.id == CustomerConnect.user_id",  back_populates="users")
+
 
     def to_schema(self):
         return UserInDB(

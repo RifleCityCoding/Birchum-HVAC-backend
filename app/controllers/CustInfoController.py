@@ -1,8 +1,8 @@
 from typing import Any, Dict, Optional, Union
 from sqlalchemy.orm import Session
 from app.controllers.BaseController import BaseController
-from app.models import CustomerInfoModel
 from app.schemas import CustomerInfoSchema
+from app.models import CustomerInfoModel, CustomerConnect, User
 
 class CustomerInfoController(BaseController[CustomerInfoModel, CustomerInfoModel, CustomerInfoModel]):
     def get_by_name(self, db: Session, *, first_name: str, last_name: str) -> Optional[CustomerInfoModel]:
@@ -21,6 +21,18 @@ class CustomerInfoController(BaseController[CustomerInfoModel, CustomerInfoModel
         db.add(db_obj)
         db.commit()
         db.refresh(db_obj)
+        joined_data = (
+            db.query(CustomerInfoModel, User)
+            .join(CustomerConnect, CustomerConnect.customer_id == CustomerInfoModel.id)
+            .join(User, User.id == CustomerConnect.user_id)
+            .filter(CustomerInfoModel.id == db_obj.id)  # Filter by the newly created CustomerInfoModel's ID
+            .all()
+        )
+
+        for customer_info, user in joined_data:
+            print(f"Customer Info: {customer_info.first_name}, {customer_info.last_name}")
+            print(f"User: {user.username}, {user.email}")
+
         return db_obj
 
     def update(

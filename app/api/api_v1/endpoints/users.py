@@ -1,8 +1,10 @@
 from typing import Any, List, Annotated
+
 from fastapi import APIRouter, Body, Depends, HTTPException, Form
 from fastapi.encoders import jsonable_encoder
 from pydantic.networks import EmailStr
 from sqlalchemy.orm import Session
+
 from app import controllers, models, schemas
 from app.api import deps
 from app.core.config import settings
@@ -186,5 +188,6 @@ def register_user(*, db: Session = Depends(deps.get_db),
 
     return {
         "access_token": token.access_token,
-        "token_type": "bearer"
+        "token_type": "bearer",
+        "user_id": str(new_user.id)
     }
